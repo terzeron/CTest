@@ -1,0 +1,26 @@
+semaphore 초기화 (별도의 프로세스에서 전역적으로 단 한 번 수행)
+
+semget으로 semaphore를 생성
+id = semget(KEY, 1, 0666 | IPC_CREAT);
+
+semctl로 초기화
+semctl(id, 0, SETVAL, arg);
+arg는 semun 타입의 val이 0인 union 변수
+
+
+semaphore P 연산
+semget으로 semaphore를 받아옴
+id = semget(KEY, 1, 0666);
+
+sembuf 타입의 명령어 op를 구성하고 {0, -1, 0}
+semop로 명령 수행
+ret = semop(id, op, 1);
+
+
+semaphore V 연산
+semget으로 semaphore를 받아옴
+id = semget(KEY, 1, 0666);
+
+sembuf 타입의 명령어 op를 구성하고 {0, 1, 0}
+semop로 명령 수행
+ret = semop(id, op, 1);
