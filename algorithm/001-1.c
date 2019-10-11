@@ -38,9 +38,9 @@ ull_t count_iteration(ull_t i)
 	    ret = count_iteration(i * 3 + 1) + 1;
 	}
     }
-    
+
     //printf("[%llu]<<=%llu\n", index, ret);
-    if (index <= ul && counts[index] > 0) 
+    if (index <= ul && counts[index] > 0)
 	store_count(index, ret);
     return ret;
 }
@@ -61,9 +61,9 @@ int main(void)
 	min = (i > j ? j : i);
 	max_len = 1;
 	ul = max;
-	counts = (ull_t *) malloc(sizeof (ull_t) * (max + 1));
-	memset(counts, 0, sizeof (ull_t) * (max + 1));
-    
+	counts = (ull_t *) malloc(sizeof(ull_t) * (max + 1));
+	memset(counts, 0, sizeof(ull_t) * (max + 1));
+
 	for (k = min; k <= max; ++k) {
 	    //printf("k=%llu\n", k);
 	    count = count_iteration(k);

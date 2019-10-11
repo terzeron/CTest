@@ -1,7 +1,9 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
 #include <sys/types.h>
 #include <sys/ipc.h>
 #include <sys/shm.h>
-#include <stdio.h>
 
 #define KEY 0x345678
 
@@ -11,11 +13,8 @@ int main(void)
 {
 	int shmid;
 	char *shmptr = NULL;
-    int y[1024];
-    char *test = NULL;
-
-    test = (char *) malloc(sizeof (char) * 1024);
-    y[0] = 1;
+    //int y[1024] = { 1, };
+    //char *test = (char *) malloc(sizeof (char) * 1024);
 
 	shmid = shmget(KEY, 10000, IPC_CREAT|SHM_R|SHM_W);
 	if (shmid < 0) {

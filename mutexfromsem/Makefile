@@ -1,10 +1,8 @@
-EXE=mutex
-OBJS=mutex.o semops.o
 CFLAGS=-g -Wall
 LDFLAGS=-Wall -pthread
 
-.c.o:
-	$(CC) -c $< $(CFLAGS)
+EXE=mutex
+OBJS=mutex.o semops.o
 
 all: $(EXE)
 

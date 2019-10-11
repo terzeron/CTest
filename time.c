@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <errno.h>
 #include <unistd.h>
 #include <sys/types.h>
@@ -8,34 +9,34 @@
 
 int main(void)
 {
-  int result = 0;
-  time_t present, next; 
-  struct tm thetime;
+    int result = 0;
+    time_t present, next; 
+    struct tm thetime;
  
-  present = time(NULL);
+    present = time(NULL);
 
-  thetime.tm_sec = 59;
-  thetime.tm_min = 59;
-  thetime.tm_hour = 11;
-  thetime.tm_mday = 31;
-  thetime.tm_mon = 12;
-  thetime.tm_year = 99;
-  next = mktime(&thetime);
+    thetime.tm_sec = 59;
+    thetime.tm_min = 59;
+    thetime.tm_hour = 11;
+    thetime.tm_mday = 31;
+    thetime.tm_mon = 12;
+    thetime.tm_year = 99;
+    next = mktime(&thetime);
    
-  printf("Present:%d Next:%d\n", present, next);
+    printf("Present:%lu Next:%lu\n", present, next);
 
-  result = stime(&next);
-  if (result == -1 && errno == EPERM) {
-    fprintf(stderr, "%s: You aren't a superuser.\n", PROGRAM);
-    return -1;
-  }
-  sleep(2);
-  system("date");
+    result = stime(&next);
+    if (result == -1 && errno == EPERM) {
+        fprintf(stderr, "%s: You aren't a superuser.\n", PROGRAM);
+        return -1;
+    }
+    sleep(2);
+    system("date");
    
-  result = stime(&present);
-  if (result == -1 && errno == EPERM) {
-    fprintf(stderr, "%s: You aren't a superuser.\n", PROGRAM);
-    return -1;
-  }
-  return 0;
+    result = stime(&present);
+    if (result == -1 && errno == EPERM) {
+        fprintf(stderr, "%s: You aren't a superuser.\n", PROGRAM);
+        return -1;
+    }
+    return 0;
 }

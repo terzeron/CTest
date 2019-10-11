@@ -4,6 +4,7 @@
    semb do not have to be executed by the same user! */
 
 #include <stdio.h>
+#include <stdlib.h>
 #include <sys/types.h>
 #include <sys/ipc.h>
 #include <sys/sem.h>
@@ -23,9 +24,9 @@ int semunlock()
     /* Get the index for the semaphore with external name KEY. */
     id = semget(KEY, 1, 0666);
     if (id < 0) {
-	/* Semaphore does not exist. */
-	fprintf(stderr, "Program sema cannot find semaphore, exiting.\n");
-	exit(0);
+        /* Semaphore does not exist. */
+        fprintf(stderr, "Program sema cannot find semaphore, exiting.\n");
+        exit(0);
     }
 
     /* Do a semaphore V-operation. */
@@ -45,8 +46,8 @@ int semunlock()
     if(retval == 0) {
 		printf("unlocked\n");
     } else {
-	printf("sema: V-operation did not succeed.\n");
-	perror("REASON");
+        printf("sema: V-operation did not succeed.\n");
+        perror("REASON");
     }
 
     return 0;

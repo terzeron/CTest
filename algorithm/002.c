@@ -21,14 +21,14 @@ void fill_around_mine(int i, int j, int width, int height)
 
     printf("fill_around_mine(%d, %d)\n", i, j);
     /* (m, n) --> (i-1, j-1) (i-1, j) (i-1, j+1) 
-                  (i,   j-1) (i,   j) (i,   j+1)
-                  (i+1, j-1) (i+1, j) (i+1, j+1) */
+       (i,   j-1) (i,   j) (i,   j+1)
+       (i+1, j-1) (i+1, j) (i+1, j+1) */
     for (m = i - 1; m <= i + 1; ++m) {
 	for (n = j - 1; n <= j + 1; ++n) {
 	    if (m >= 0 && m < width && n >= 0 && n < width) {
 		if (m == i && n == j)
 		    cnt_map[i][j] = '*';
-		else 
+		else
 		    increment(m, n);
 	    }
 	}
@@ -67,10 +67,10 @@ int main(void)
     int field_num = 0;
 
     while (scanf("%d%d", &height, &width) != EOF) {
-	if (width == 0 && height == 0) 
+	if (width == 0 && height == 0)
 	    break;
-	memset(mine_map, 0, sizeof (char) * 100 * 100);
-	memset(cnt_map, '0', sizeof (char) * 100 * 100);
+	memset(mine_map, 0, sizeof(char) * 100 * 100);
+	memset(cnt_map, '0', sizeof(char) * 100 * 100);
 	for (i = 0; i < height; ++i) {
 	    if (scanf("%s", mine_str) == EOF) {
 		break;
@@ -91,6 +91,6 @@ int main(void)
 
 	printf("\n");
     }
-    
+
     return 0;
 }

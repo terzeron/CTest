@@ -3,7 +3,9 @@
 #include <stdlib.h>
 #include <pthread.h>
 
+
 #define N 2
+
 
 struct _data {
     int count;
@@ -12,12 +14,13 @@ struct _data {
 
 extern int errno;
 
+
 void *add(void *arg)
 {
     struct _data *temp = (struct _data *) arg;
-    static int sum = 0;
-    int i;
-    char ret_char = '\n';
+    //static int sum = 0;
+    //int i;
+    //char ret_char = '\n';
 
     struct timespec rqtp;
     struct timespec rmtp;
@@ -34,10 +37,10 @@ void *add(void *arg)
     */
 
     while (2) {
-	pthread_mutex_lock(temp->lock_var);
-	nanosleep(&rqtp, &rmtp);
-	pthread_mutex_unlock(temp->lock_var);
-	printf("second thread %d.%ld\n", (int) rmtp.tv_sec, rmtp.tv_nsec);
+        pthread_mutex_lock(temp->lock_var);
+        nanosleep(&rqtp, &rmtp);
+        pthread_mutex_unlock(temp->lock_var);
+        printf("second thread %d.%ld\n", (int) rmtp.tv_sec, rmtp.tv_nsec);
 	
     }
 
@@ -47,9 +50,9 @@ void *add(void *arg)
 void *delete(void *arg)
 {
     struct _data *temp = (struct _data *) arg;
-    static int sum = 0;
-    int i;
-    char ret_char = '\n';
+    //static int sum = 0;
+    //int i;
+    //char ret_char = '\n';
 
     struct timespec rqtp;
     struct timespec rmtp;
@@ -58,10 +61,10 @@ void *delete(void *arg)
     rqtp.tv_nsec = 100000000L;
 
     while (1) {
-	pthread_mutex_lock(temp->lock_var);
-	nanosleep(&rqtp, &rmtp);
-	pthread_mutex_unlock(temp->lock_var);
-	printf("first thread %d.%ld\n", (int) rmtp.tv_sec, rmtp.tv_nsec);
+        pthread_mutex_lock(temp->lock_var);
+        nanosleep(&rqtp, &rmtp);
+        pthread_mutex_unlock(temp->lock_var);
+        printf("first thread %d.%ld\n", (int) rmtp.tv_sec, rmtp.tv_nsec);
     }
     return NULL;
 }
@@ -80,27 +83,27 @@ int main(int argc, char *argv[])
     pthread_mutex_init(&init_lock_var, NULL);
 
     for (i = 0; i < N; i++) {
-	data[i].count = i;
-	data[i].lock_var = &init_lock_var;
+        data[i].count = i;
+        data[i].lock_var = &init_lock_var;
 
-	if (i == 0) {
-	    if (pthread_create(&thread[i], NULL, &delete, &data[i])) {
-		fprintf(stderr, "%s: can't make thread\n", argv[0]);
-		exit(-1);
-	    }
-	} else {
-	    if (pthread_create(&thread[i], NULL, &add, &data[i])) {
-		fprintf(stderr, "%s: can't make thread\n", argv[0]);
-		exit(-1);
-	    }
-	}
+        if (i == 0) {
+            if (pthread_create(&thread[i], NULL, &delete, &data[i])) {
+                fprintf(stderr, "%s: can't make thread\n", argv[0]);
+                exit(-1);
+            }
+        } else {
+            if (pthread_create(&thread[i], NULL, &add, &data[i])) {
+                fprintf(stderr, "%s: can't make thread\n", argv[0]);
+                exit(-1);
+            }
+        }
     }
 
     for (i = 0; i < N; i++) {
-	if (pthread_join(thread[i], &ret)) {
-	    fprintf(stderr, "%s: can't join thread\n", argv[0]);
-	    exit(-1);
-	}
+        if (pthread_join(thread[i], &ret)) {
+            fprintf(stderr, "%s: can't join thread\n", argv[0]);
+            exit(-1);
+        }
     }
     
     return 0;

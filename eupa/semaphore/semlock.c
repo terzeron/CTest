@@ -3,8 +3,8 @@
 
 /* Semaphore example program b (semb.c) */
 /* We have two programs, sema and semb. Semb may be initiated at any 
-  time, but will be forced to wait until sema is executed. Sema and
-  semb do not have to be executed by the same user! */
+   time, but will be forced to wait until sema is executed. Sema and
+   semb do not have to be executed by the same user! */
 
 /* HOW TO TEST:
    Execute semb &
@@ -35,9 +35,9 @@ int semlock()
     /* Get the index for the semaphore with external name KEY. */
     id = semget(KEY, 1, 0666);
     if(id < 0) {
-	/* Semaphore does not exist. */
-	fprintf(stderr, "Program semb cannot find semaphore, exiting.\n");
-	exit(0);
+        /* Semaphore does not exist. */
+        fprintf(stderr, "Program semb cannot find semaphore, exiting.\n");
+        return -1;
     }
 
 	printf("try to lock\n");
@@ -55,7 +55,7 @@ int semlock()
     if(retval == 0) {
 		printf("locked\n");
     } else {
-	fprintf(stderr, "semb: P-operation did not succeed.\n");
+        fprintf(stderr, "semb: P-operation did not succeed.\n");
     }
 
     return 0;

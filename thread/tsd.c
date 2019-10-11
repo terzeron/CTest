@@ -43,18 +43,18 @@ void *thread_routine(void *arg)
     if (status != 0) {
         fprintf(stderr, "Set tsd\n");
     }
-    printf("%d %s set tsd value %p\n", pthread_self(), (char *) arg, value);
+    printf("%lu %s set tsd value %p\n", pthread_self(), (char *) arg, value);
     
     value->thread_id = pthread_self();
     value->string = (char *) arg;
 
     value = (tsd_t *) pthread_getspecific(tsd_key);
-    printf("%d %s starting...\n", pthread_self(), value->string);
+    printf("%lu %s starting...\n", pthread_self(), value->string);
 
     sleep(10);
 
     value = (tsd_t *) pthread_getspecific(tsd_key);
-    printf("%d %s done...\n", pthread_self(), value->string);
+    printf("%lu %s done...\n", pthread_self(), value->string);
 
     return NULL;
 }

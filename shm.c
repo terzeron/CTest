@@ -12,12 +12,12 @@
 int main(void)
 {
 	int shmid1 = 0;
-    int shmid2 = 0;
-    int shmid3 = 0;
+    //int shmid2 = 0;
+    //int shmid3 = 0;
     char *shmptr1 = NULL;
-    char *shmptr2 = NULL;
-	char *shmptr3 = NULL;	
-    int test;
+    //char *shmptr2 = NULL;
+	//char *shmptr3 = NULL;	
+    //int test;
     
 	shmid1 = shmget(KEY2, 10000, IPC_CREAT|SHM_R|SHM_W);
 	if (shmid1 < 0) {

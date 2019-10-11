@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include <string.h>
+#include <unistd.h>
 #include <err.h>
 #include <sys/types.h>
 #include <sys/wait.h>
@@ -26,6 +28,7 @@ int main(void)
             err(-1, "waitpid error");
         printf("%% ");
     }
-    exit(0);
+
+    return 0;
 }
 

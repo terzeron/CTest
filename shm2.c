@@ -6,21 +6,17 @@
 #include <string.h>
 #include <errno.h>
 
+
 int shmid1 = 0;
 char *shmptr1 = NULL;
 int flag = IPC_CREAT | SHM_R | SHM_W;
 
-int main(int argc, char *argv[])
-{
-    shm_init();
-	register_func();
-
-	return 0;
-}
 
 int shm_init()
 {
-    shmid1 = shmget(KEY1, 10000, flag);
+    key_t key = (key_t) 9527;
+    
+    shmid1 = shmget(key, 10000, flag);
     if (shmid1 < 0) {
         fprintf(stderr, "shmget error, %s\n", strerror(errno));
         return -1;
@@ -35,4 +31,12 @@ int shm_init()
     return 0;
 }
 
+
+int main(int argc, char *argv[])
+{
+    shm_init();
+	//register_func();
+
+	return 0;
+}
 

@@ -26,20 +26,20 @@ main(int argc, char** argv)
 				}
 				break; 
 			case (1):
-			{
-				printf("Got Foo!\n");
-			}
-			break; 
+                {
+                    printf("Got Foo!\n");
+                }
+                break; 
 			case (2):
-			{
-				printf("Got Bar!\n");
-			}
-			break; 
+                {
+                    printf("Got Bar!\n");
+                }
+                break; 
 			case (3):
-			{
-				printf("Got Baz!\n");
-			}
-			break; 
+                {
+                    printf("Got Baz!\n");
+                }
+                break; 
 			} 
 		default:
 			{

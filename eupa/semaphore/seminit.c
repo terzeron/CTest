@@ -19,9 +19,9 @@ int seminit()
        semaphore is initially 0. */
 
     union semun {
-	int val;
-	struct semid_ds *buf;
-	ushort * array;
+        int val;
+        struct semid_ds *buf;
+        ushort * array;
     } argument;
 
     argument.val = 1;
@@ -34,8 +34,8 @@ int seminit()
     /* Always check system returns. */
 
     if (id < 0) {
-	fprintf(stderr, "Unable to obtain semaphore.\n");
-	exit(0);
+        fprintf(stderr, "Unable to obtain semaphore.\n");
+        return -1;
     }
 
     /* What we actually get is an array of semaphores. The second 
@@ -46,9 +46,9 @@ int seminit()
        # id to the value 0. */
 
     if (semctl(id, 0, SETVAL, argument) < 0) {
-	fprintf( stderr, "Cannot set semaphore value.\n");
+        fprintf( stderr, "Cannot set semaphore value.\n");
     } else {
-	fprintf(stderr, "Semaphore %d initialized.\n", KEY);
+        fprintf(stderr, "Semaphore %d initialized.\n", KEY);
     }
 
     return 0;

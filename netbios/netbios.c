@@ -125,7 +125,8 @@ int first_decode(const char *src, char *name)
     }
 
     for (i = 0; i < 32; i++) {
-        name[i / 2] = ((((int) p[i] - 'A') << 4) + ((int) p[++i] - 'A'));
+        name[i / 2] = ((((int) p[i] - 'A') << 4) + ((int) p[i+1] - 'A'));
+        i++;
     }
 
     suffix = name[15];

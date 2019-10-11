@@ -1,25 +1,21 @@
-CC = gcc
-RM = rm
+CFLAGS=-g -Wall -O0
+LDFLAGS=-Wall -g
 
-CCFLAGS = -g 
-WARNINGFLAGS = -Wtraditional
-INCFLAGS = 
-LIBFLAGS = 
+EXE=brutesearch kmpsearch euclid euclid2 fraction convert
 
-EXE = brutesearch.o kmpsearch.o euclid euclid2 fraction convert
-.c.o:
-	$(CC) $(CCFLAGS) -c $< $(WARNINGFLAGS) $(INCFLAGS)
-
-all:	$(EXE)
+all: $(EXE)
 
 fraction: fraction.o
-	$(CC) -o $@ $? $(LIBFLAGS) 
+	$(CC) -o $@ $? $(LDFLAGS) 
+
 convert: convert.o
-	$(CC) -o $@ $? $(LIBFLAGS) 
+	$(CC) -o $@ $? $(LDFLAGS) 
+
 euclid: euclid.o
-	$(CC) -o $@ $? $(LIBFLAGS) 
+	$(CC) -o $@ $? $(LDFLAGS) 
+
 euclid2: euclid2.o
-	$(CC) -o $@ $? $(LIBFLAGS) 
+	$(CC) -o $@ $? $(LDFLAGS) 
 
 clean:
 	$(RM) -f *.o *.c~ core *.h~ $(EXE) 
