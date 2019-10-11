@@ -1,5 +1,5 @@
 TOPTARGETS=all subdirs
-SUBDIRS=algorithm eupa mutexfromsem netbios eupa/semaphore gdbm
+SUBDIRS=algorithm eupa mutexfromsem netbios eupa/semaphore gdbm pthread
 
 CFLAGS=-g -Wall
 LDFLAGS=-Wall

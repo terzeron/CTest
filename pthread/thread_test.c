@@ -3,9 +3,7 @@
 #include <stdlib.h>
 #include <pthread.h>
 
-
 #define N 2
-
 
 struct _data {
     int count;
@@ -14,13 +12,12 @@ struct _data {
 
 extern int errno;
 
-
 void *add(void *arg)
 {
     struct _data *temp = (struct _data *) arg;
-    //static int sum = 0;
-    //int i;
-    //char ret_char = '\n';
+    static int sum = 0;
+    int i;
+    char ret_char = '\n';
 
     struct timespec rqtp;
     struct timespec rmtp;
@@ -50,9 +47,9 @@ void *add(void *arg)
 void *delete(void *arg)
 {
     struct _data *temp = (struct _data *) arg;
-    //static int sum = 0;
-    //int i;
-    //char ret_char = '\n';
+    static int sum = 0;
+    int i;
+    char ret_char = '\n';
 
     struct timespec rqtp;
     struct timespec rmtp;
