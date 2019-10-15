@@ -1,0 +1,25 @@
+NBT (NetBIOS over TCP/IP) 분석
+
+시나리오 
+Win98 BUDDY와 Win2k SERVER를 같은 작업 그룹으로 지정하고, Win98 앞 단에 bridge를 물려서 이 bridge에서 패킷 캡쳐하였음
+
+1. 부팅하면서
+0) ARP로 IP 주소 확인 
+1) Registration NB BUDDY <00> 10.0.0.255로 브로드캐스팅 
+2) Registration NB TAOWG <00> 10.0.0.255로 브로드캐스팅 
+3) Registration NB BUDDY <03> 10.0.0.255로 브로드캐스팅 
+몇 차례 반복
+4) Registration NB BUDDY <20> 10.0.0.255로 브로드캐스팅 
+5) Registration NB TAOWG <1E> 10.0.0.255로 브로드캐스팅 
+
+2. SERVER에 접근
+1) Name Query NB SERVER <20> 10.0.0.255로 브로드캐스팅
+2) SERVER (10.0.0.200)이 Name query response NB 10.0.0.200을 10.0.0.101로 응답
+
+3. 종료할 때
+1) Release NB BUDDY <20>를 10.0.0.255로 브로드캐스팅
+2) Release NB BUDDY <03>를 10.0.0.255로 브로드캐스팅
+3) Release NB BUDDY <00>를 10.0.0.255로 브로드캐스팅
+4) Release NB TAOWG <00>를 10.0.0.255로 브로드캐스팅
+4) Release NB TAOWG <1E>를 10.0.0.255로 브로드캐스팅
+

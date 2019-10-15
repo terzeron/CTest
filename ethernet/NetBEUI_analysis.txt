@@ -1,0 +1,31 @@
+NETBEUI 분석
+
+시나리오 
+win98 BUDDY에서 win2k server인 \\SERVER\share에 접근
+BUDDY는 NetBEUI만 올린 상태, win2k server SERVER는 
+TCP/IP와 NetBEUI를 모두 올린 상태
+
+1. 부팅하면서
+1) Add Name Query - BUDDY <00> 03:00:00:00:00:01
+2) Add Group Name Query - TAOWG <00>
+3) Add Name Query - BUDDY <03> 2번
+4) Add Group Name Query - TAOWG <00>
+5) Add Name Query - BUDDY <00>
+6) Add Name Query - BUDDY <20> 3번
+7) Add broup Name Query - TAOWG <1E>
+응답없음 - 이걸 방해하는 방법도 가능함
+
+2. SERVER에 접근하면서
+1) Add Name Query - TERZERON 
+2) Name Query for SERVER
+3) Name Recognized - SERVER (SERVER --> BUDDY)
+이후에도 request/response가 계속되지만 복잡한 프로토콜이므로 
+name resolusion 단계에서 해결해야 함
+
+3. 종료할 때
+특별한 패킷 전송 없음
+
+
+
+
+
