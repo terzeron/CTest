@@ -1,7 +1,7 @@
 TOPTARGETS=all 
 
 CFLAGS=-g -Wall
-LDFLAGS=-Wall -L/usr/lib/x86_64-linux-gnu/ -lgdbm
+LDFLAGS=-Wall -lgdbm
 
 EXES=count
 
